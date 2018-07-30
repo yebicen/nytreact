@@ -1,5 +1,30 @@
 import axios from "axios";
 
+var queryURL= "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
+
+export default {
+  search: function(query) {
+    return axios.get(queryURL += "&q=" + query);
+  },
+  
+  // Gets all books
+  getArticles: function() {
+    return axios.get("/api/articles");
+  },
+  // Gets the book with the given id
+  getArticle: function(id) {
+    return axios.get("/api/articles/" + id);
+  },
+  // Deletes the book with the given id
+  deleteArticle: function(id) {
+    return axios.delete("/api/articles/" + id);
+  },
+  // Saves a book to the database
+  saveArticle: function(articleData) {
+    return axios.post("/api/articles", articleData);
+  }
+};
+
 // The getRecipes method retrieves recipes from the server
 // It accepts a "query" or term to search the recipe api for
 // export default {
@@ -26,7 +51,7 @@ import axios from "axios";
 // });
 
 
-var queryURL= "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
+
 
 
 // function buildQueryURL() {
@@ -61,26 +86,5 @@ var queryURL= "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=
 // }
 
 
+ 
 
-export default {
-  search: function(query) {
-    return axios.get(queryURL += "&q=" + query);
-  },
-  
-  // Gets all books
-  getArticles: function() {
-    return axios.get("/api/article");
-  },
-  // Gets the book with the given id
-  getArticle: function(id) {
-    return axios.get("/api/article/" + id);
-  },
-  // Deletes the book with the given id
-  deleteArticle: function(id) {
-    return axios.delete("/api/article/" + id);
-  },
-  // Saves a book to the database
-  saveArticle: function(articleData) {
-    return axios.post("/api/article", articleData);
-  }
-};

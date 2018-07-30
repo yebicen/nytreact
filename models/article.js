@@ -5,7 +5,7 @@ const articleSchema = new Schema({
   snippet: { type: String, required: true },
   source: { type: String, required: true },
   href: { type: String, required: true },
-  date:{ type: String, required: true },
+  publishdate:{ type: String, required: true },
   Date: { type: Date, default: Date.now }
 });
 
