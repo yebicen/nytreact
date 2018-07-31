@@ -27,6 +27,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "if-env": "^1.0.4",
-    "mongoose": "^5.2.5"
+    "mongoose": "^5.2.5",
+    "yarn": "^1.9.2"
   }
 }
