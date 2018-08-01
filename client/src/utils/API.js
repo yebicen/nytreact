@@ -4,7 +4,7 @@ var queryURL= "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=
 
 export default {
   search: function(query) {
-    return axios.get(queryURL += "&q=" + query);
+    return axios.get(queryURL + "&q=" + query);
   },
   
   // Gets all books

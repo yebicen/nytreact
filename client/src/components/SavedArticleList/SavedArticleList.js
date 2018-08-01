@@ -1,6 +1,12 @@
 import React from "react";
+import "./SavedArticleList.css";
 
-// RecipeList renders a bootstrap list item
-export const SavedArticleList = props => (
-  <ul className="list-group">{props.children}</ul>
-);
+export const SavedArticleList = ({ children }) => {
+  return (
+    <div className="list-overflow-container">
+      <ul className="list-group">
+        {children}
+      </ul>
+    </div>
+  );
+};

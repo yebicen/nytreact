@@ -3,6 +3,7 @@ import Jumbotron from "./components/Jumbotron";
 import Nav from "./components/Nav";
 import Input from "./components/Input";
 import Button from "./components/Button";
+import DeleteBtn from "./components/DeleteBtn";
 import API from "./utils/API";
 import { ArticleList, ArticleListItem } from "./components/ArticleList";
 import { SavedArticleList, SavedArticleListItem } from "./components/SavedArticleList";
@@ -22,7 +23,7 @@ class App extends Component {
 
   searchArticles = query => {
     console.log("searching...", this.state.articleSearch)
-    API.search(query)
+    API.search(this.state.articleSearch) 
       .then(res =>this.setState({ articles: res.data.response.docs }))
       .catch(err => console.log(err));
   };
@@ -140,11 +141,26 @@ class App extends Component {
               {!this.state.articles.length ? (
                 <p className="text-center">Start Searching Here</p>
               ) : (
+                  // <ArticleList>
+                  //   {this.state.articles.map(article => {
+                  //     return (
+                  //       <ArticleListItem
+                  //         // key={article.snippet}
+                  //         snippet={article.snippet}
+                  //         source={article.source}
+                  //         href={article.web_url}
+                  //         publishdate={article.pub_date}
+                  //         handleSavingArticles={this.handleSavingArticles}
+                  //       />
+                  //     );
+                  //   })}
+
+                  // </ArticleList>
                   <ArticleList>
-                    {this.state.articles.map(article => {
+                    {this.state.articles.slice(0,5).map(article => {
                       return (
                         <ArticleListItem
-                          key={article.snippet}
+                          // key={article.snippet}
                           snippet={article.snippet}
                           source={article.source}
                           href={article.web_url}
@@ -156,6 +172,9 @@ class App extends Component {
 
                   </ArticleList>
 
+
+
+
                 )}
             </Col>
           </Row>
@@ -164,7 +183,7 @@ class App extends Component {
 
 
 
-        <Container>
+        <Container> 
           <Row>
           <Col size="xs-12">
           <h2> MY SAVED ARTICLES </h2>
@@ -173,14 +192,33 @@ class App extends Component {
               ) : (
                   <SavedArticleList>
                     {this.state.savedarticles.map(savedarticle => {
-                      return (
-                        <SavedArticleListItem
-                          key={savedarticle.snippet}
-                          snippet={savedarticle.snippet}
-                          source={savedarticle.source}
-                          href={savedarticle.href}
-                          publishdate={savedarticle.publishdate}
-                        />
+                      // return (
+                      //   <SavedArticleListItem
+                      //     key={savedarticle._id}
+                      //     snippet={savedarticle.snippet}
+                      //     source={savedarticle.source}
+                      //     href={savedarticle.href}
+                      //     publishdate={savedarticle.publishdate}
+                      //     deleteArticle={this.deleteArticle}
+                      //   />
+                      // );
+                      return (   
+                        <SavedArticleListItem key={savedarticle._id}>
+                          {/* <a href={"/api/articles/" + savedarticle._id}>
+                          </a> */}
+                          <h3>
+                            {savedarticle.snippet} 
+                           </h3>
+                           <p>
+                              {savedarticle.source} </p>
+                           <p>   
+                              {savedarticle.href} </p>
+                           <p>   
+                              {savedarticle.publishdate}
+                           </p>
+
+                          <DeleteBtn onClick={() => this.deleteArticle(savedarticle._id)} />
+                        </SavedArticleListItem>
                       );
                     })}
 
