@@ -1,4 +1,5 @@
-http://g.recordit.co/QQBamt4Pbe.gif
+![Alt Text](http://g.recordit.co/QQBamt4Pbe.gif)
+
 
 # nytreact
 React App
