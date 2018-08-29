@@ -1,4 +1,4 @@
-![Alt Text](http://g.recordit.co/QQBamt4Pbe.gif)
+![Alt Text](NYTreact.gif)
 
 
 # nytreact
